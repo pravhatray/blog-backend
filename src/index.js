@@ -4,7 +4,7 @@ const Connect = require("./config/db");
 require('dotenv').config();
 const PORT = process.env.PORT || 8000;
 const app = express();
-app.use(cors({origin:'http://localhost:3000',credentials:true,optionsSuccessStatus:200}));
+app.use(cors({origin:'http://localhost:3000',credentials:false,optionsSuccessStatus:200}));
 app.use(express.json())
 const userRouter = require("./user/user.router")
 const postRouter = require("./post/post.router")
