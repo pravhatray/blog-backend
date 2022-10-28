@@ -1,10 +1,15 @@
 const express = require("express")
 const cors = require("cors");
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
 const Connect = require("./config/db");
-require('dotenv').config();
 const PORT = process.env.PORT || 8000;
 const app = express();
-app.use(cors({origin:'http://localhost:3000',credentials:false,optionsSuccessStatus:200}));
+app.use(cors(corsOptions));
+require('dotenv').config();
 app.use(express.json())
 const userRouter = require("./user/user.router")
 const postRouter = require("./post/post.router")
