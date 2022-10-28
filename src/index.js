@@ -2,9 +2,9 @@ const express = require("express")
 const cors = require("cors");
 const Connect = require("./config/db");
 require('dotenv').config();
-// const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 const app = express();
-app.use(cors({credentials:true}))
+app.use(cors())
 app.use(express.json())
 const userRouter = require("./user/user.router")
 const postRouter = require("./post/post.router")
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 })
 
 
-app.listen(8080, async () => {
+app.listen(PORT, async () => {
     await Connect()
-    console.log(`Server is running on port 8080`)
+    console.log(`Server is running on port ${PORT}`)
 })
